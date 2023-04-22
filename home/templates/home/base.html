@@ -13,8 +13,8 @@ Content goes here.
         <ul>
             <a href="{% url 'home:home' %}"><li>HOME</li></a>
             <a href="{% url 'blog:blog' %}"><li>Blog</li></a>
-            <li>Product</li>
-            <li>About</li>
+            {% comment %} <a href="{% url 'product:product' %}"><li>Product</li> {% endcomment %}
+            <a href="{% url 'contact:contact' %}"><li>About</li>
         </ul>
     </div>
     <div class="content">

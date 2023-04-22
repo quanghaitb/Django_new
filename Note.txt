@@ -1,0 +1,22 @@
+Commit to githup
+
+git status
+
+git add .
+
+git commit -m "Name_commit"
+
+ git push -u origin main
+
+
+## MODEL 
+
+Migrations là những cách Django kiểm tra sự thay đổi mà bạn đã tác động đến các models mà bạn muốn nó tác động đến database của bạn. 
+Migrations được thiết kế cách tự động, tuy nhiên bạn nên cần biết để dễ config và chỉnh sửa
+
+RUN COMMAND 
+
+python manage.py makemigrations *name_model 
+
+python manage.py migrate
+
