@@ -6,3 +6,4 @@ class contactForm(models.Model):
     email = models.EmailField()
     body = models.TextField()
     
+    
