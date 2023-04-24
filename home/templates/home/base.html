@@ -11,10 +11,11 @@
 Content goes here.
     <div class="menu">
         <ul>
-            <a href="{% url 'home:home' %}"><li>HOME</li></a>
+            {% comment %} <a href="{% url 'home:home' %}"><li>HOME</li></a>
             <a href="{% url 'blog:blog' %}"><li>Blog</li></a>
-            {% comment %} <a href="{% url 'product:product' %}"><li>Product</li> {% endcomment %}
+            {% comment %} <a href="{% url 'product:product' %}"><li>Product</li>
             <a href="{% url 'contact:contact' %}"><li>About</li>
+             {% endcomment %} 
         </ul>
     </div>
     <div class="content">
