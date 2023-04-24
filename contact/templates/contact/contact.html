@@ -1,4 +1,10 @@
-{% extends 'home/base.html'%}
-{%block content%}
-    <h2>Day la trang contact</h2>
-{% endblock %}
+{% comment %} {% extends 'home/base.html'%}
+{%block content%} {% endcomment %}
+    <form action="{% url 'contact:getContact' %}" method = "post">
+        {% csrf_token %}
+        {{ cf.as_p }}
+        <input type= "submit">
+    </form>
+
+
+{% comment %} {% endblock %} {% endcomment %}
