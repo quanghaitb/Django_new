@@ -1,0 +1,14 @@
+
+
+{% extends 'home/base.html' %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'static/css/style.css' %}">
+
+    {% block content %}
+
+        <h1 class="detailBlog" >{{pD.title}}</h1>
+        
+        {{pD.description}}
+        {{pD.created_at}}
+    {% endblock %}

@@ -2,13 +2,128 @@
 <html>
 <head>
 {% load static %}
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+
+{% bootstrap_javascript %}
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ 
+
+{% bootstrap_messages %}
 <title>NGUYEN QUANG HAI</title>
 <meta name="description" content="Our first page">
 <meta name="keywords" content="html tutorial template">
-<link rel="stylesheet" href="{% static 'home/style.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+
+{% comment %} <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type = 'text/css'> {% endcomment %}
+
 </head>
 <body>
-Content goes here.
+<script type="text/javascript" src="{% static 'home/js/bootstrap.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'home/js/bootstrap.js' %}"></script> 
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-branch" href="#">
+            <img src="{% static 'home/image/image1.jpg' %}" alt="bannner" height="70"> 
+        </a>
+        <button class="navbar-toggler" type ="button" data-toggle= "collapse" data-target="#navbarReponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarReponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class= "nav-item">
+                    <a class="nav-link" href="{% url 'home:home' %}">HOME</a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="#">Product</a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="{% url 'blog:blog' %}">Blog</a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="{% url 'contact:contact' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar">
+            <form class="form-inline">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Up</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
+            </form>
+        </div>
+        
+    </div>
+    
+</nav>
+<!-- Carousel-->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1" ></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3" ></li>
+    </ol>
+    
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active text-center">
+            <img class="d-block w-100" src="{% static 'home/image/image3.jpg' %}" alt="">
+            <div class="carousel-caption">
+                <h1 class="display-2">Example</h1>
+                <h3>Auto with bootstrap</h3>
+                <button type = "button" class="btn btn-outline-light btn-lg">Tutorial</button>
+            </div> 
+        </div>
+        <div class="carousel-item ">
+            <img class="d-block w-100" src="{% static 'home/image/image2.jpg' %}" alt="">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{% static 'home/image/image3.jpg' %}" alt="">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{% static 'home/image/image4.jpg' %}" alt="">
+        </div>
+
+    </div>
+</div>
+    
+
+
+{% comment %} <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+
+            <div class="row pt-4">
+                <div class="col-md-2" >HOME</div>
+                <div class="col-md-4">Hỗ trợ</div>
+                <div class="col-md-6">Xây dựng</div>
+
+            </div>
+        </div>
+        <div class="pr-4 col-sm-4">
+            <div class="row pt-4">
+                <div class="col-md-4">Đ ăng nhập</div>
+                <div class="col-md-4">Đăng ký</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class=""></div>
+    </div>
+
+
+
+
+</div> {% endcomment %}
+
+
     <div class="menu">
         <ul>
             {% comment %} <a href="{% url 'home:home' %}"><li>HOME</li></a>

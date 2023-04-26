@@ -1,5 +1,5 @@
 <h2> DAY LA TRANG hahah</h2>
-<form action="{% url 'contact:saveContact' %}" method="post">
+<form action="{% url 'contact:contact' %}" method="post">
     {% csrf_token %}
     {{ cf.as_p }}
     <input type="submit">
