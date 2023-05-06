@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+    {% block content %}
+    <div class="row justify-content-center">
+        <div class='col-4'>
+            <form action="{% url 'UserMember:register' %}" method="post">
+                {% csrf_token %}
+                {{ reg|crispy  }}
+                <input type="submit">
+            </form>
+        </div>
+        
+    </div>
+    
+
+    {% endblock %}

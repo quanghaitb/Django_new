@@ -1,7 +1,14 @@
-<h2> DAY LA TRANG hahah</h2>
-<form action="{% url 'contact:contact' %}" method="post">
-    {% csrf_token %}
-    {{ cf.as_p }}
-    <input type="submit">
-</form>
-        
+{% extends 'home/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class='col-4'>
+        <form action="{% url 'contact:contact' %}" method="post">
+            {% csrf_token %}
+            {{ cf|crispy  }}
+            <input type="submit">
+        </form>
+    </div>
+</div>
+{% endblock %} 
