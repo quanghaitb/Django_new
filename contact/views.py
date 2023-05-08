@@ -3,14 +3,18 @@ from django.http import HttpResponse
 from .forms import contact_Forms
 from .models import contactForm
 from django.views import View
+from UserMember.forms import LoginForm
+from UserMember.forms import Reg_Form
 
 # Create your views here.
 
 class contact(View):
     
     def get(self, request):
+        lForm = LoginForm
+        reg = Reg_Form
         cf = contact_Forms
-        return render(request, 'contact/contact.html', {'cf':cf})
+        return render(request, 'contact/contact.html', {'cf':cf,'lForm': lForm, 'reg': reg})
    
     
     def post(self, request):

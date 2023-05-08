@@ -1,6 +1,9 @@
 <!doctype html>
 <html>
 <head>
+
+
+
 {% load static %}
 {% load django_bootstrap5 %}
 
@@ -12,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% bootstrap_messages %}
 <title>NGUYEN QUANG HAI</title>
@@ -21,15 +24,103 @@
 <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
 
 {% comment %} <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" type = 'text/css'> {% endcomment %}
-
+{% load crispy_forms_tags %}
 </head>
 <body>
 <script type="text/javascript" src="{% static 'home/js/bootstrap.min.js' %}"></script>  
 <script type="text/javascript" src="{% static 'home/js/bootstrap.js' %}"></script> 
+
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class='col-12'>
+                <form action="{% url 'UserMember:login' %}" method="post">
+                <div class="modal-body mx-3">
+                    
+                    {% csrf_token %}
+                
+                
+                    <div class="md-form mb-5">
+                        <label data-error="wrong" data-success="right" for="orangeForm-name">Username</label>
+                        <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Username" name="username" id="username">
+                        
+                    </div>
+
+                    <div class="md-form mb-4">
+                        <label data-error="wrong" data-success="right" for="orangeForm-name">Your password</label>
+                        <input type="password" id="orangeForm-name" class="form-control validate" placeholder="Password" name="password" id="password">
+                        
+                        {% comment %} {{ lForm.password|as_crispy_field }} {% endcomment %}
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button onclick="logmein()" class="btn btn-default">Login</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{% url 'UserMember:register' %}" method="post">
+        {% csrf_token %}
+        <div class="modal-body mx-3">
+          
+          <div class="md-form mb-5">
+            <label data-error="wrong" data-success="right" for="orangeForm-name">Username</label>
+            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Username" name="username" id="username">
+            {% comment %} {{ reg.username|as_crispy_field }} {% endcomment %}
+            
+          </div>
+          <div class="md-form mb-5">
+            <label data-error="wrong" data-success="right" for="orangeForm-name">Your password</label>
+            <input type="password" id="orangeForm-name" class="form-control validate" placeholder="Password" name="password" id="password">
+            {% comment %} {{ reg.password|as_crispy_field }} {% endcomment %}
+            
+          </div>
+          <div class="md-form mb-5">
+            <label data-error="wrong" data-success="right" for="orangeForm-name">Confirm your password</label>
+            <input type="password" id="orangeForm-name" class="form-control validate" placeholder="Confirm your password" name="password2" id="password2">
+            {% comment %} {{ reg.password|as_crispy_field }} {% endcomment %}
+            
+          </div>
+
+          <div class="md-form mb-4">
+            <label data-error="wrong" data-success="right" for="orangeForm-name">Person ID</label>
+            <input type="text" id="orangeForm-name" class="form-control validate" placeholder="Person ID " name="userID" id="userID">
+            {% comment %} {{ reg.userID|as_crispy_field }} {% endcomment %}
+            
+          </div>
+
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-deep-orange" type = "submit">Sign up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
         <a class="navbar-branch" href="#">
-            <img src="{% static 'home/image/image1.jpg' %}" alt="bannner" height="70"> 
+            <img src="{% static 'home/image/icon2.jpg' %}" alt="bannner" height="70"> 
         </a>
         <button class="navbar-toggler" type ="button" data-toggle= "collapse" data-target="#navbarReponsive">
             <span class="navbar-toggler-icon"></span>
@@ -53,13 +144,25 @@
                 </li>
             </ul>
         </div>
-        <div class="navbar">
-            <form class="form-inline">
-                <a href="{% url 'UserMember:register' %}" class="btn btn-outline-success my-2 my-sm-0" role="button" aria-pressed="true">Sign Up</a>
-                <a href="{% url 'UserMember:login' %}" class="btn btn-outline-success my-2 my-sm-0" role="button" aria-pressed="true">Sign In</a>
-                
-            </form>
-        </div>
+        {% if user.is_active %}
+            <div class = 'md-2'><b>{{user.username}}</b></div>
+           
+            {% comment %} <button style="font-size:24px"><i class="fa fa-sign-out"></i></button> {% endcomment %}
+            <a href="{% url 'UserMember:logout' %}" class="fa fa-sign-out my-2 my-sm-0" role="button" aria-pressed="true"></a>
+
+        
+        {% else %}
+            <div class="navbar">
+                <form class="form-inline">
+                    
+                    <a href="{% url 'UserMember:register' %}" class="btn btn-outline-success my-2 my-sm-0" role="button" aria-pressed="true" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</a>
+                    <a href="{% url 'UserMember:login' %}" class="btn btn-outline-success my-2 my-sm-0" role="button" aria-pressed="true"  data-toggle="modal" data-target="#modalLoginForm">Sign In</a>
+                </form>
+            </div>
+        {% endif %}
+        
+
+        
         
     </div>
     
@@ -96,47 +199,35 @@
 </div>
     
 
-
-{% comment %} <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-4">
-
-            <div class="row pt-4">
-                <div class="col-md-2" >HOME</div>
-                <div class="col-md-4">Hỗ trợ</div>
-                <div class="col-md-6">Xây dựng</div>
-
+<!-- Sidebar -->
+<div class="row">
+    <div class="col-sm-2">
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+            <div class="position-sticky md-4">
+                <div class="list-group list-group-flush mt-1 ">
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple active"><i class=""></i><span>Categories</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Poker</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Football</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Bi-a</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Keyboard</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Mouse</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Laptop</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Phone</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Book</span></a>
+                    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class=""></i><span>Fan</span></a>
+                </div>
             </div>
-        </div>
-        <div class="pr-4 col-sm-4">
-            <div class="row pt-4">
-                <div class="col-md-4">Đ ăng nhập</div>
-                <div class="col-md-4">Đăng ký</div>
-            </div>
-        </div>
+        </nav>
     </div>
-    <div class="row">
-        <div class=""></div>
-    </div>
+    <div class="col-md-8"> <h1>hahahah</h1></div>
+   
+</div>
 
 
 
-
-</div> {% endcomment %}
-
-
-    <div class="menu">
-        <ul>
-            {% comment %} <a href="{% url 'home:home' %}"><li>HOME</li></a>
-            <a href="{% url 'blog:blog' %}"><li>Blog</li></a>
-            {% comment %} <a href="{% url 'product:product' %}"><li>Product</li>
-            <a href="{% url 'contact:contact' %}"><li>About</li>
-             {% endcomment %} 
-        </ul>
-    </div>
-    <div class="content">
-        {% block content %}
-        {% endblock %}
-    </div>
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>

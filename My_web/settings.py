@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'crispy_forms',
     'crispy_bootstrap4',
-    'UserMember'
+    'UserMember',
+    'product',
+    'category'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 
